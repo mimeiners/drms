@@ -3,7 +3,7 @@ project:
   output-dir: _book
 
 book:
-  title: "Design and Realization of Mixed-Technoloy Systems"
+  title: "Design and Realization of Mixed-Technology Systems"
   author:
     - name: "Mirco Meiners"
       orcid: "0000-0002-9709-4191"
@@ -31,7 +31,7 @@ book:
   page-footer:
     left: |
       Design and Realization of Mixed-Technology Systems (DRMS)
-#      Concept Engineering Mixed-Technology Systems
+      formerly known as Concept Engineering Mixed-Technology Systems (CEMS)
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
 #  cover-image: images/hsb-logo.png
@@ -48,9 +48,9 @@ book:
     - part: Lecture
       chapters:
         - lec/lec-01-intro.qmd
-        - lec/lec-03-sampling_quantization.qmd
-        - lec/lec-04-adc_metrics.qmd
-        - lec/lec-05a-oversampling_adc.qmd
+    #    - lec/lec-03-sampling_quantization.qmd
+    #    - lec/lec-04-adc_metrics.qmd
+    #    - lec/lec-05a-oversampling_adc.qmd
 
     # - part: Winter 2024/25
     #   chapters:
@@ -64,11 +64,11 @@ book:
 
   output-file: "drms"
 
-highlight-style: pygments
 
 # Bibliography
-bibliography: _bibliography/references.bib
-csl: _bibliography/ieee.csl
+bibliography: bibliography/references.bib
+# csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/ieee.csl"
+csl: bibliography/ieee.csl
 
 
 format:
@@ -80,6 +80,7 @@ format:
     # monofont: Cascadia Mono, Menlo, Consolas, Courier New, Courier
     # backgroundcolor: "white"
     # fontcolor: "black"
+    highlight-style: github
 
   epub:
     theme: flatly
@@ -89,47 +90,50 @@ format:
     # monofont: Cascadia Mono, Menlo, Consolas, Courier New, Courier
     # backgroundcolor: "white"
     # fontcolor: "black"
+    highlight-style: github
 
-  pdf:
-    documentclass: scrbook
-    classoption: [twoside]
+  typst: default
 
-    keep-tex: true
+  # pdf:
+  #   documentclass: scrbook
+  #   classoption: [twoside]
 
-    toc: true
-    toc-depth: 3
-    # toc-title: "Table of contents"
-    # lof: true
-    # lot: true
+  #   keep-tex: true
 
-    number-sections: true
-    number-depth: 2
+  #   toc: true
+  #   toc-depth: 3
+  #   # toc-title: "Table of contents"
+  #   # lof: true
+  #   # lot: true
+
+  #   number-sections: true
+  #   number-depth: 2
         
-    papersize: a4
+  #   papersize: a4
         
-    geometry:
-      - inner=3cm
-      - outer=4cm
-      - top=3cm
-      - bottom=4cm
-      - headsep=22pt
-      - headheight=11pt
-      - footskip=33pt
-      - ignorehead
-      - ignorefoot
-      - heightrounded
+  #   geometry:
+  #     - inner=3cm
+  #     - outer=4cm
+  #     - top=3cm
+  #     - bottom=4cm
+  #     - headsep=22pt
+  #     - headheight=11pt
+  #     - footskip=33pt
+  #     - ignorehead
+  #     - ignorefoot
+  #     - heightrounded
 
-    fontsize: 11pt
-    pdfengine: xelatex
+  #   fontsize: 11pt
+  #   pdfengine: xelatex
 
-    mainfont: "Calibri"
-    # mainfont: "Times New Roman"
-    # sansfont: "Arial"
-    # monofont: "Courier New"
-    mathfont: "TeX Gyre Termes Math"
+  #   mainfont: "Calibri"
+  #   # mainfont: "Times New Roman"
+  #   # sansfont: "Arial"
+  #   # monofont: "Courier New"
+  #   mathfont: "TeX Gyre Termes Math"
     
-    # include-in-header:
-    #   - frontmatter/header.tex
-    # template-partials:
-    # - frontmatter/before-body.tex
-    # - frontmatter/toc.tex
+  #   # include-in-header:
+  #   #   - frontmatter/header.tex
+  #   # template-partials:
+  #   # - frontmatter/before-body.tex
+  #   # - frontmatter/toc.tex
