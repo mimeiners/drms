@@ -13,13 +13,13 @@
     -   Partitioning
     -   Layout
 
-## Scientific Computing
+## Scientific Computing / Agentic Engineering
 
--   [Python (Anaconda)](https://www.anaconda.com/download/)
+* [Python (3.13, 3.14)](https://www.python.org/)
 
--   [Matlab (Campus Lizenz)](https://de.mathworks.com/academia/tah-portal/hochschule-bremen-31463273.html)
+* [Matlab Campus License](https://de.mathworks.com/academia/tah-portal/hochschule-bremen-31463273.html)
 
--   [Command-line tools](https://jeroenjanssens.com/seven/)
+
 
 ## EDA Tools
 
@@ -35,107 +35,72 @@
     -   [cadence IC Design & Verification](https://www.cadence.com/en_US/home/tools/design-excellence.html)
     -   [synopsys silicon design (IC)](https://www.synopsys.com/silicon-design.html)
 
-## OS-Tools
 
--   [Microsoft-Terminal](https://github.com/microsoft/terminal)
+## Operating System Tools
+* [SSH (Secure Shell)](https://de.wikipedia.org/wiki/Secure_Shell)
+* [Microsoft-Terminal](https://github.com/microsoft/terminal)
+* [Microsoft-PowerShell](https://learn.microsoft.com/de-de/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.4)
+* [MacOS-Terminal](https://iterm2.com)
+* [Linux/MacOS zsh-tools](https://ohmyz.sh)
+* [Linux/MacOS bash-it](https://bash-it.readthedocs.io/en/latest/)
+* [Git (Versionskontrolle)](https://git-scm.com)
+* [TortoiseGit – Windows Shell Interface to Git](https://tortoisegit.org/)
 
--   [Microsoft-PowerShell](https://learn.microsoft.com/de-de/powershell/scripting/learn/ps101/01-getting-started)
-
--   [MacOS-Terminal](https://iterm2.com)
-
--   [Linux/MacOS Shell zsh-tools](https://ohmyz.sh),
-
--   [git (Versionskontrolle)](https://git-scm.com)
 
 ## Code Editors
-
--   [Visual Studio Code](https://code.visualstudio.com)
-
--   [Spyder IDE](https://www.spyder-ide.org)
-
--   [Thonny (Micro-)Python IDE](https://thonny.org)
-
--   [Emacs](https://www.gnu.org/software/emacs/)
-
--   [Vim](https://www.vim.org)
-
-## Data Science
-
-- Journaled File System
-
-	- Directories
-	- Files
-  
-- Rectangular Data
-	
-	- Comma-Separated-Values (CSV), Tab-Separated-Values (TSV)
-	- [csvkit: A suite of utilities for converting to and working with CSV, the king of tabular file
-      formats.](https://github.com/wireservice/csvkit)
-	- [miller: Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON]
-      (https://github.com/wireservice/csvkit)
-	- Spreadsheet (.xlsx, .ods)
-	
-  
-## Publish Computational Content
-
-- [quarto](https://quarto.org)
-    - [Manuscripts](https://quarto.org/docs/manuscripts/)
-
-- [Jupyter-Book](https://jupyterbook.org/en/stable/intro.html)
+* [Visual Studio Code](https://code.visualstudio.com)
+* [Spyder IDE](https://www.spyder-ide.org)
+* [Thonny (Micro-)Python IDE](https://thonny.org)
+* [Emacs](https://www.gnu.org/software/emacs/)
+* [Vim](https://www.vim.org)
 
 
-## Are you writing or TeXing?
+## Scientific Writing
 
--   [MikTeX (Windows, MacOS, Linux)](https://miktex.org/)
+* [quarto](https://quarto.org)
+   * [Manuscripts](https://quarto.org/docs/manuscripts/)
 
--   [MacTeX (MacOS)](https://www.tug.org/mactex/)
+* LaTeX
+  * [MikTeX (Windows, MacOS, Linux)](https://miktex.org/)
+  * [MacTeX (MacOS)](https://www.tug.org/mactex/)
+  * [TeXLive (Linux)](http://tug.org/texlive/)
 
--   [TeXLive (Linux)](http://tug.org/texlive/)
+* LaTeX Editors
+  * [TeXStudio](http://www.texstudio.org)
+  * [TeXMaker](http://www.xm1math.net/texmaker/)
+  * [TeXWorks](http://www.tug.org/texworks/)
 
-## LaTeX Editors
+* Collaborative Frameworks
+  * [ShareLaTeX, Online LaTeX](https://www.sharelatex.com/)
+  * [CoCalc - Online LaTeX](https://cocalc.com/doc/latex-editor.html)
+	* a service of [AcademicCloud](https://academiccloud.de)
 
--   IDE's
-    -   [TeXStudio](http://www.texstudio.org)
-    -   [TeXMaker](http://www.xm1math.net/texmaker/)
--   Collaborative Frameworks
-    -   [Overleaf, Online LaTeX](https://www.overleaf.com/)
-    -   [CoCalc - Online LaTeX](https://cocalc.com/doc/latex-editor.html)
+* Literature Management
+  * [Zotero](https://www.suub.uni-bremen.de/service-beratung/literaturverwaltung/zotero/) 
+  * [Citavi](https://www.suub.uni-bremen.de/service-beratung/literaturverwaltung/citavi-2/)
 
-## Bibliography and LaTeX
-
--   [Citavi](https://www1.citavi.com/sub/manual5/de/exporting_to_bibtex.html)
-
--   [Zotero](https://nerdpause.de/benutzerdefinierte-bibtex-keys-mit-zotero/)
-
--   [JabRef](https://unimelb.libguides.com/c.php?g=565734&p=3897117)
+* Data Science
+  * [Command-line tools](https://jeroenjanssens.com/dsatcl/) 
+  * Comma-Separated-Values (CSV), Tab-Separated-Values (TSV)
+	* [csvkit](https://github.com/wireservice/csvkit)
+	* [miller](https://github.com/johnkerl/miller)
+  * Spreadsheet (.xlsx, .ods)
 
 
-## Model-Based Systems Engineering (MBSE) of an Inertial Sensor System and IC Design
+## Design of a General-Purpose Second-Order Switched-Capacitor $\Delta\Sigma$-ADC
 
-This winter term, the defining idea of the CEMS course is a modular board-level sensor system consisting of ADXL335
-accelerometer, ADS1115 ADC and ESP8266 NodeMCU. The ADC module has to be replaced by a custom IC design.
+|       Parameter       | Symbol | Value | Units |
+|:---------------------:|:------:|:-----:|:-----:|
+|       Bandwidth       | $f_B$  |  ~1   |  kHz  |
+|  Sampling Frequency   | $f_S$  |   1   |  MHz  |
+| Signal-to-Noise Ratio |  SNR   |  100  |  dB   |
+|    Supply Voltage     |  VDD   |  1.5  |   V   |
 
-```{mermaid}
-%%| label: fig-system
-%%| fig-cap: "Modular board-level sensor system."
-flowchart LR
-	A(ADXL335) --> B(ADS1115)
-	B --> C(ESP8266)
-	C --> D{Measurement}
-	D --> E(Thonny Micropython)
-	D --> F(Arduino IDE C)
-```
 
 -   System level, behavioural model
 
     -   Matlab/Simulink,
     -   Python
-
--   PCB level
-
-    -   [ESP8266 NodeMCU](https://randomnerdtutorials.com/getting-started-with-esp8266-wifi-transceiver-review/),
-    -   [TIs ADS1115](https://www.ti.com/product/ADS1115),
-    -   [ADs ADXL335](https://www.analog.com/en/products/adxl335.html)
 
 -   IC level, SPICE with behavioural blocks, e.g. OTA and comparator
 
