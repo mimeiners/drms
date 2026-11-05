@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -26,7 +26,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -36,18 +56,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references.html" rel="next">
+<link href="../designs/ana_inv/index.html" rel="next">
 <link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5de16f5e46225c21e2daa90d340bf64f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9d76ca62eed1c98cead66c40863d9800.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e8df4f7f6da0d93fa1b12922bb240437.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,24 +96,50 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lec/lec-01-intro.html">Lecture</a></li><li class="breadcrumb-item"><a href="../lec/lec-01-intro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction and Survey</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lec/lec-01-intro.html">Lecture</a></li><li class="breadcrumb-item"><a href="../lec/lec-01-intro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction and Survey</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -103,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Design and Realization of Mixed-Technology Systems</a> 
@@ -149,17 +196,28 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Lecture</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lec/lec-01-intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction and Survey</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Tutorials</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../designs/ana_inv/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Analog Inverter Tutorial</span></span></a>
   </div>
 </li>
       </ul>
@@ -176,29 +234,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#course-objectives" id="toc-course-objectives" class="nav-link active" data-scroll-target="#course-objectives"><span class="header-section-number">2.1</span> Course Objectives</a></li>
-  <li><a href="#scientific-computing" id="toc-scientific-computing" class="nav-link" data-scroll-target="#scientific-computing"><span class="header-section-number">2.2</span> Scientific Computing</a></li>
+  <li><a href="#scientific-computing-agentic-engineering" id="toc-scientific-computing-agentic-engineering" class="nav-link" data-scroll-target="#scientific-computing-agentic-engineering"><span class="header-section-number">2.2</span> Scientific Computing / Agentic Engineering</a></li>
   <li><a href="#eda-tools" id="toc-eda-tools" class="nav-link" data-scroll-target="#eda-tools"><span class="header-section-number">2.3</span> EDA Tools</a></li>
-  <li><a href="#os-tools" id="toc-os-tools" class="nav-link" data-scroll-target="#os-tools"><span class="header-section-number">2.4</span> OS-Tools</a></li>
+  <li><a href="#operating-system-tools" id="toc-operating-system-tools" class="nav-link" data-scroll-target="#operating-system-tools"><span class="header-section-number">2.4</span> Operating System Tools</a></li>
   <li><a href="#code-editors" id="toc-code-editors" class="nav-link" data-scroll-target="#code-editors"><span class="header-section-number">2.5</span> Code Editors</a></li>
-  <li><a href="#data-science" id="toc-data-science" class="nav-link" data-scroll-target="#data-science"><span class="header-section-number">2.6</span> Data Science</a></li>
-  <li><a href="#publish-computational-content" id="toc-publish-computational-content" class="nav-link" data-scroll-target="#publish-computational-content"><span class="header-section-number">2.7</span> Publish Computational Content</a></li>
-  <li><a href="#are-you-writing-or-texing" id="toc-are-you-writing-or-texing" class="nav-link" data-scroll-target="#are-you-writing-or-texing"><span class="header-section-number">2.8</span> Are you writing or TeXing?</a></li>
-  <li><a href="#latex-editors" id="toc-latex-editors" class="nav-link" data-scroll-target="#latex-editors"><span class="header-section-number">2.9</span> LaTeX Editors</a></li>
-  <li><a href="#bibliography-and-latex" id="toc-bibliography-and-latex" class="nav-link" data-scroll-target="#bibliography-and-latex"><span class="header-section-number">2.10</span> Bibliography and LaTeX</a></li>
-  <li><a href="#model-based-systems-engineering-mbse-of-an-inertial-sensor-system-and-ic-design" id="toc-model-based-systems-engineering-mbse-of-an-inertial-sensor-system-and-ic-design" class="nav-link" data-scroll-target="#model-based-systems-engineering-mbse-of-an-inertial-sensor-system-and-ic-design"><span class="header-section-number">2.11</span> Model-Based Systems Engineering (MBSE) of an Inertial Sensor System and IC Design</a></li>
-  <li><a href="#course-prerequisites" id="toc-course-prerequisites" class="nav-link" data-scroll-target="#course-prerequisites"><span class="header-section-number">2.12</span> Course Prerequisites</a></li>
+  <li><a href="#scientific-writing" id="toc-scientific-writing" class="nav-link" data-scroll-target="#scientific-writing"><span class="header-section-number">2.6</span> Scientific Writing</a></li>
+  <li><a href="#design-of-a-general-purpose-second-order-switched-capacitor-deltasigma-adc" id="toc-design-of-a-general-purpose-second-order-switched-capacitor-deltasigma-adc" class="nav-link" data-scroll-target="#design-of-a-general-purpose-second-order-switched-capacitor-deltasigma-adc"><span class="header-section-number">2.7</span> Design of a General-Purpose Second-Order Switched-Capacitor <span class="math inline">\(\Delta\Sigma\)</span>-ADC</a></li>
+  <li><a href="#course-prerequisites" id="toc-course-prerequisites" class="nav-link" data-scroll-target="#course-prerequisites"><span class="header-section-number">2.8</span> Course Prerequisites</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/mimeiners/drms/edit/main/lec/lec-01-intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mimeiners/drms/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lec/lec-01-intro.html">Lecture</a></li><li class="breadcrumb-item"><a href="../lec/lec-01-intro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction and Survey</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lec/lec-01-intro.html">Lecture</a></li><li class="breadcrumb-item"><a href="../lec/lec-01-intro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction and Survey</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction and Survey</span></h1>
 </div>
@@ -238,12 +292,11 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="scientific-computing" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="scientific-computing"><span class="header-section-number">2.2</span> Scientific Computing</h2>
+<section id="scientific-computing-agentic-engineering" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="scientific-computing-agentic-engineering"><span class="header-section-number">2.2</span> Scientific Computing / Agentic Engineering</h2>
 <ul>
-<li><p><a href="https://www.anaconda.com/download/">Python (Anaconda)</a></p></li>
-<li><p><a href="https://de.mathworks.com/academia/tah-portal/hochschule-bremen-31463273.html">Matlab (Campus Lizenz)</a></p></li>
-<li><p><a href="https://jeroenjanssens.com/seven/">Command-line tools</a></p></li>
+<li><p><a href="https://www.python.org/">Python (3.13, 3.14)</a></p></li>
+<li><p><a href="https://de.mathworks.com/academia/tah-portal/hochschule-bremen-31463273.html">Matlab Campus License</a></p></li>
 </ul>
 </section>
 <section id="eda-tools" class="level2" data-number="2.3">
@@ -266,120 +319,116 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="os-tools" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="os-tools"><span class="header-section-number">2.4</span> OS-Tools</h2>
+<section id="operating-system-tools" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="operating-system-tools"><span class="header-section-number">2.4</span> Operating System Tools</h2>
 <ul>
-<li><p><a href="https://github.com/microsoft/terminal">Microsoft-Terminal</a></p></li>
-<li><p><a href="https://learn.microsoft.com/de-de/powershell/scripting/learn/ps101/01-getting-started">Microsoft-PowerShell</a></p></li>
-<li><p><a href="https://iterm2.com">MacOS-Terminal</a></p></li>
-<li><p><a href="https://ohmyz.sh">Linux/MacOS Shell zsh-tools</a>,</p></li>
-<li><p><a href="https://git-scm.com">git (Versionskontrolle)</a></p></li>
+<li><a href="https://de.wikipedia.org/wiki/Secure_Shell">SSH (Secure Shell)</a></li>
+<li><a href="https://github.com/microsoft/terminal">Microsoft-Terminal</a></li>
+<li><a href="https://learn.microsoft.com/de-de/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.4">Microsoft-PowerShell</a></li>
+<li><a href="https://iterm2.com">MacOS-Terminal</a></li>
+<li><a href="https://ohmyz.sh">Linux/MacOS zsh-tools</a></li>
+<li><a href="https://bash-it.readthedocs.io/en/latest/">Linux/MacOS bash-it</a></li>
+<li><a href="https://git-scm.com">Git (Versionskontrolle)</a></li>
+<li><a href="https://tortoisegit.org/">TortoiseGit – Windows Shell Interface to Git</a></li>
 </ul>
 </section>
 <section id="code-editors" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="code-editors"><span class="header-section-number">2.5</span> Code Editors</h2>
 <ul>
-<li><p><a href="https://code.visualstudio.com">Visual Studio Code</a></p></li>
-<li><p><a href="https://www.spyder-ide.org">Spyder IDE</a></p></li>
-<li><p><a href="https://thonny.org">Thonny (Micro-)Python IDE</a></p></li>
-<li><p><a href="https://www.gnu.org/software/emacs/">Emacs</a></p></li>
-<li><p><a href="https://www.vim.org">Vim</a></p></li>
+<li><a href="https://code.visualstudio.com">Visual Studio Code</a></li>
+<li><a href="https://www.spyder-ide.org">Spyder IDE</a></li>
+<li><a href="https://thonny.org">Thonny (Micro-)Python IDE</a></li>
+<li><a href="https://www.gnu.org/software/emacs/">Emacs</a></li>
+<li><a href="https://www.vim.org">Vim</a></li>
 </ul>
 </section>
-<section id="data-science" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="data-science"><span class="header-section-number">2.6</span> Data Science</h2>
-<ul>
-<li><p>Journaled File System</p>
-<ul>
-<li>Directories</li>
-<li>Files</li>
-</ul></li>
-<li><p>Rectangular Data</p>
-<ul>
-<li>Comma-Separated-Values (CSV), Tab-Separated-Values (TSV)</li>
-<li><a href="https://github.com/wireservice/csvkit">csvkit: A suite of utilities for converting to and working with CSV, the king of tabular file formats.</a></li>
-<li>[miller: Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON] (https://github.com/wireservice/csvkit)</li>
-<li>Spreadsheet (.xlsx, .ods)</li>
-</ul></li>
-</ul>
-</section>
-<section id="publish-computational-content" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="publish-computational-content"><span class="header-section-number">2.7</span> Publish Computational Content</h2>
+<section id="scientific-writing" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="scientific-writing"><span class="header-section-number">2.6</span> Scientific Writing</h2>
 <ul>
 <li><a href="https://quarto.org">quarto</a>
 <ul>
 <li><a href="https://quarto.org/docs/manuscripts/">Manuscripts</a></li>
 </ul></li>
-<li><a href="https://jupyterbook.org/en/stable/intro.html">Jupyter-Book</a></li>
-</ul>
-</section>
-<section id="are-you-writing-or-texing" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="are-you-writing-or-texing"><span class="header-section-number">2.8</span> Are you writing or TeXing?</h2>
+<li>LaTeX
 <ul>
-<li><p><a href="https://miktex.org/">MikTeX (Windows, MacOS, Linux)</a></p></li>
-<li><p><a href="https://www.tug.org/mactex/">MacTeX (MacOS)</a></p></li>
-<li><p><a href="http://tug.org/texlive/">TeXLive (Linux)</a></p></li>
-</ul>
-</section>
-<section id="latex-editors" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="latex-editors"><span class="header-section-number">2.9</span> LaTeX Editors</h2>
-<ul>
-<li>IDE’s
+<li><a href="https://miktex.org/">MikTeX (Windows, MacOS, Linux)</a></li>
+<li><a href="https://www.tug.org/mactex/">MacTeX (MacOS)</a></li>
+<li><a href="http://tug.org/texlive/">TeXLive (Linux)</a></li>
+</ul></li>
+<li>LaTeX Editors
 <ul>
 <li><a href="http://www.texstudio.org">TeXStudio</a></li>
 <li><a href="http://www.xm1math.net/texmaker/">TeXMaker</a></li>
+<li><a href="http://www.tug.org/texworks/">TeXWorks</a></li>
 </ul></li>
 <li>Collaborative Frameworks
 <ul>
-<li><a href="https://www.overleaf.com/">Overleaf, Online LaTeX</a></li>
-<li><a href="https://cocalc.com/doc/latex-editor.html">CoCalc - Online LaTeX</a></li>
+<li><a href="https://www.sharelatex.com/">ShareLaTeX, Online LaTeX</a></li>
+<li><a href="https://cocalc.com/doc/latex-editor.html">CoCalc - Online LaTeX</a>
+<ul>
+<li>a service of <a href="https://academiccloud.de">AcademicCloud</a></li>
+</ul></li>
+</ul></li>
+<li>Literature Management
+<ul>
+<li><a href="https://www.suub.uni-bremen.de/service-beratung/literaturverwaltung/zotero/">Zotero</a></li>
+<li><a href="https://www.suub.uni-bremen.de/service-beratung/literaturverwaltung/citavi-2/">Citavi</a></li>
+</ul></li>
+<li>Data Science
+<ul>
+<li><a href="https://jeroenjanssens.com/dsatcl/">Command-line tools</a></li>
+<li>Comma-Separated-Values (CSV), Tab-Separated-Values (TSV)
+<ul>
+<li><a href="https://github.com/wireservice/csvkit">csvkit</a></li>
+<li><a href="https://github.com/johnkerl/miller">miller</a></li>
+</ul></li>
+<li>Spreadsheet (.xlsx, .ods)</li>
 </ul></li>
 </ul>
 </section>
-<section id="bibliography-and-latex" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="bibliography-and-latex"><span class="header-section-number">2.10</span> Bibliography and LaTeX</h2>
-<ul>
-<li><p><a href="https://www1.citavi.com/sub/manual5/de/exporting_to_bibtex.html">Citavi</a></p></li>
-<li><p><a href="https://nerdpause.de/benutzerdefinierte-bibtex-keys-mit-zotero/">Zotero</a></p></li>
-<li><p><a href="https://unimelb.libguides.com/c.php?g=565734&amp;p=3897117">JabRef</a></p></li>
-</ul>
-</section>
-<section id="model-based-systems-engineering-mbse-of-an-inertial-sensor-system-and-ic-design" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="model-based-systems-engineering-mbse-of-an-inertial-sensor-system-and-ic-design"><span class="header-section-number">2.11</span> Model-Based Systems Engineering (MBSE) of an Inertial Sensor System and IC Design</h2>
-<p>This winter term, the defining idea of the CEMS course is a modular board-level sensor system consisting of ADXL335 accelerometer, ADS1115 ADC and ESP8266 NodeMCU. The ADC module has to be replaced by a custom IC design.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div id="fig-system" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-<pre class="mermaid mermaid-js" data-label="fig-system">flowchart LR
-    A(ADXL335) --&gt; B(ADS1115)
-    B --&gt; C(ESP8266)
-    C --&gt; D{Measurement}
-    D --&gt; E(Thonny Micropython)
-    D --&gt; F(Arduino IDE C)
-</pre>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-system-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Modular board-level sensor system.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
+<section id="design-of-a-general-purpose-second-order-switched-capacitor-deltasigma-adc" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="design-of-a-general-purpose-second-order-switched-capacitor-deltasigma-adc"><span class="header-section-number">2.7</span> Design of a General-Purpose Second-Order Switched-Capacitor <span class="math inline">\(\Delta\Sigma\)</span>-ADC</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Parameter</th>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Value</th>
+<th style="text-align: center;">Units</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Bandwidth</td>
+<td style="text-align: center;"><span class="math inline">\(f_B\)</span></td>
+<td style="text-align: center;">~1</td>
+<td style="text-align: center;">kHz</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Sampling Frequency</td>
+<td style="text-align: center;"><span class="math inline">\(f_S\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">MHz</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Signal-to-Noise Ratio</td>
+<td style="text-align: center;">SNR</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">dB</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Supply Voltage</td>
+<td style="text-align: center;">VDD</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">V</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li><p>System level, behavioural model</p>
 <ul>
 <li>Matlab/Simulink,</li>
 <li>Python</li>
-</ul></li>
-<li><p>PCB level</p>
-<ul>
-<li><a href="https://randomnerdtutorials.com/getting-started-with-esp8266-wifi-transceiver-review/">ESP8266 NodeMCU</a>,</li>
-<li><a href="https://www.ti.com/product/ADS1115">TIs ADS1115</a>,</li>
-<li><a href="https://www.analog.com/en/products/adxl335.html">ADs ADXL335</a></li>
 </ul></li>
 <li><p>IC level, SPICE with behavioural blocks, e.g.&nbsp;OTA and comparator</p>
 <ul>
@@ -388,8 +437,8 @@ Figure&nbsp;2.1: Modular board-level sensor system.
 <li><p><strong>Final Oral Exam/Project Presentation</strong></p></li>
 </ul>
 </section>
-<section id="course-prerequisites" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="course-prerequisites"><span class="header-section-number">2.12</span> Course Prerequisites</h2>
+<section id="course-prerequisites" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="course-prerequisites"><span class="header-section-number">2.8</span> Course Prerequisites</h2>
 <ul>
 <li><p>Fundamentals of linux operating systems</p></li>
 <li><p>Fundamentals of microelectronics</p>
@@ -408,6 +457,174 @@ Figure&nbsp;2.1: Modular board-level sensor system.
 </ul>
 
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-arnaldi2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Arnaldi, <em>Design of sigma-delta converters in <span>MATLAB</span><span>®</span>/simulink<span>®</span></em>. Springer International Publishing, 2019. doi: <a href="https://doi.org/10.1007/978-3-319-91539-5">10.1007/978-3-319-91539-5</a>.</div>
+</div>
+<div id="ref-bajdechi2004a" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">O. Bajdechi and J. Huijsing, <em>Systematic design of sigma-delta analog-to-digital converters</em>, vol. 768. in The springer international series in engineering and computer science, vol. 768. Kluwer Academic Publishers, 2004, p. 208. Available: <a href="http://www.springer.com/engineering/circuits+%26+systems/book/978-1-4020-7945-0?changeHeader">http://www.springer.com/engineering/circuits+%26+systems/book/978-1-4020-7945-0?changeHeader</a></div>
+</div>
+<div id="ref-baker-2019-cmosedu" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">R. J. Baker, <span>“CMOSedu.com.”</span> Accessed: Nov. 13, 2025. [Online]. Available: <a href="https://cmosedu.com">https://cmosedu.com</a></div>
+</div>
+<div id="ref-baker2008" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">R. J. Baker, <em><span>CMOS</span>: Mixed-signal circuit design</em>, 2nd ed. Wiley-IEEE Press, 2008, p. 352. doi: <a href="https://doi.org/10.13140/RG.2.1.5146.6005">10.13140/RG.2.1.5146.6005</a>.</div>
+</div>
+<div id="ref-baker2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">R. J. Baker, <em>CMOS: Circuit design, layout, and simulation</em>, 3rd ed. Wiley, 2010. doi: <a href="https://doi.org/10.1002/9780470891179">10.1002/9780470891179</a>.</div>
+</div>
+<div id="ref-baker2011" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">B. Baker, <span>“How delta-sigma <span>ADC</span>s work, <span>P</span>art 1,”</span> Texas Instruments Incorporation, Analog Application Journal (AAJ) SLYT423a, 2011. Available: <a href="https://www.ti.com/lit/an/slyt423a/slyt423a.pdf">https://www.ti.com/lit/an/slyt423a/slyt423a.pdf</a></div>
+</div>
+<div id="ref-baker2011a" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">B. Baker, <span>“How delta-sigma <span>ADC</span>s work, <span>P</span>art 2,”</span> Texas Instruments Incorporation, Analog Application Journal (AAJ) SLYT438, 2011. Available: <a href="https://www.ti.com/lit/an/slyt438/slyt438.pdf">https://www.ti.com/lit/an/slyt438/slyt438.pdf</a></div>
+</div>
+<div id="ref-blachman-1985" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">N. Blachman, <span>“The intermodulation and distortion due to quantization of sinusoids,”</span> <em>IEEE Transactions on Acoustics, Speech, and Signal Processing</em>, vol. 33, no. 6, pp. 1417–1426, 1985, doi: <a href="https://doi.org/10.1109/TASSP.1985.1164729">10.1109/TASSP.1985.1164729</a>.</div>
+</div>
+<div id="ref-boser1988" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">B. E. Boser and B. A. Wooley, <span>“The design of sigma-delta modulation analog-to-digital converters,”</span> <em>IEEE Journal of Solid-State Circuits</em>, vol. 23, no. 6, pp. 1298–1308, Dec. 1988, doi: <a href="https://doi.org/10.1109/4.90025">10.1109/4.90025</a>.</div>
+</div>
+<div id="ref-boser2003" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">B. E. Boser, <span>“EECS247: Analog-digital interface integrated circuits.”</span> Course notes, University of California Berkeley, Feb. 2003.</div>
+</div>
+<div id="ref-brandt1994" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">B. P. Brandt and B. A. Wooley, <span>“A low-power, area-efficient digital filter for decimation and interpolation,”</span> <em>IEEE Journal of Solid-State Circuits</em>, vol. 29, no. 6, pp. 679–687, June 1994, doi: <a href="https://doi.org/10.1109/4.293113">10.1109/4.293113</a>.</div>
+</div>
+<div id="ref-candy1986" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">J. Candy, <span>“Decimation for sigma delta modulation,”</span> <em>IEEE Transactions on Communications</em>, vol. 34, no. 1, pp. 72–76, Jan. 1986, doi: <a href="https://doi.org/10.1109/TCOM.1986.1096432">10.1109/TCOM.1986.1096432</a>.</div>
+</div>
+<div id="ref-chae2011" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">Y. Chae <em>et al.</em>, <span>“A 2.1 m pixels, 120 frame/s CMOS image sensor with column-parallel <span class="math inline">\(\Delta \Sigma\)</span> ADC architecture,”</span> <em>IEEE Journal of Solid-State Circuits</em>, vol. 46, no. 1, pp. 236–247, 2011, doi: <a href="https://doi.org/10.1109/JSSC.2010.2085910">10.1109/JSSC.2010.2085910</a>.</div>
+</div>
+<div id="ref-clifford2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">M. Clifford, <span>“Fundamental principles behind the sigma-delta ADC topology: Part 2,”</span> Analog Devices (AD), Feb. 2016. Available: <a href="https://www.analog.com/en/resources/technical-articles/fundamental-principles-behind-sigma-delta-adc-topology-part2.html">https://www.analog.com/en/resources/technical-articles/fundamental-principles-behind-sigma-delta-adc-topology-part2.html</a></div>
+</div>
+<div id="ref-clifford2016a" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">M. Clifford, <span>“Fundamental principles behind the sigma-delta ADC topology: Part 1,”</span> Analog Devices (AD), Jan. 2016. Available: <a href="https://www.analog.com/en/resources/technical-articles/behind-the-sigma-delta-adc-topology.html">https://www.analog.com/en/resources/technical-articles/behind-the-sigma-delta-adc-topology.html</a></div>
+</div>
+<div id="ref-gray1982" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">P. R. Gray and R. G. Meyer, <span>“MOS operational amplifier design-a tutorial overview,”</span> <em>IEEE Journal of Solid-State Circuits</em>, vol. 17, no. 6, pp. 969–982, Dec. 1982, doi: <a href="https://doi.org/10.1109/JSSC.1982.1051851">10.1109/JSSC.1982.1051851</a>.</div>
+</div>
+<div id="ref-herman2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">K. Herman <em>et al.</em>, <span>“On the versatility of the IHP BiCMOS open source and manufacturable PDK: A step towards the future where anybody can design and build a chip,”</span> <em>IEEE Solid-State Circuits Magazine</em>, vol. 16, no. 2, pp. 30–38, 2024, doi: <a href="https://doi.org/10.1109/mssc.2024.3372907">10.1109/mssc.2024.3372907</a>.</div>
+</div>
+<div id="ref-jaeger2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">R. C. Jaeger and T. N. Blalock, <em>Microelectronic circuit design</em>, 6th ed. New York, New York: McGraw-Hill, 2023. Available: <a href="http://ebookcentral.proquest.com/lib/suub/detail.action?docID=6865812">http://ebookcentral.proquest.com/lib/suub/detail.action?docID=6865812</a></div>
+</div>
+<div id="ref-kester2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">W. Kester, <em>Data conversion handbook</em>. Newnes, 2004. Available: <a href="http://www.analog.com/library/analogDialogue/archives/39-06/data_conversion_handbook.html">http://www.analog.com/library/analogDialogue/archives/39-06/data_conversion_handbook.html</a></div>
+</div>
+<div id="ref-lienig2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">J. Lienig and J. Scheible, <em>Fundamentals of layout design for electronic circuits</em>. Springer International Publishing, 2020. doi: <a href="https://doi.org/10.1007/978-3-030-39284-0">10.1007/978-3-030-39284-0</a>.</div>
+</div>
+<div id="ref-lienig2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">J. Lienig and J. Scheible, <em>Grundlagen des layoutentwurfs elektronischer schaltungen</em>. Springer International Publishing, 2023. doi: <a href="https://doi.org/10.1007/978-3-031-15768-4">10.1007/978-3-031-15768-4</a>.</div>
+</div>
+<div id="ref-lyons2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">R. Lyons, <span>“Optimizing the half-band filters in multistage decimation and interpolation.”</span> DSP Related, Jan. 2016. Available: <a href="https://www.dsprelated.com/showarticle/903.php">https://www.dsprelated.com/showarticle/903.php</a></div>
+</div>
+<div id="ref-lyons2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">R. Lyons, <span>“A beginner’s guide to cascaded integrator-comb (CIC) filters.”</span> DSP Related Blog, Mar. 2020. Available: <a href="https://www.dsprelated.com/showarticle/1337.php">https://www.dsprelated.com/showarticle/1337.php</a></div>
+</div>
+<div id="ref-markus2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">J. Markus, J. Silva, and G. C. Temes, <span>“Theory and applications of incremental <span><span class="math inline">\(\Delta\)</span></span><span><span class="math inline">\(\Sigma\)</span></span> converters,”</span> <em>IEEE Transactions on Circuits and Systems I: Regular Papers</em>, vol. 51, no. 4, pp. 678–690, 2004, doi: <a href="https://doi.org/10.1109/TCSI.2004.826202">10.1109/TCSI.2004.826202</a>.</div>
+</div>
+<div id="ref-maxim2003" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">Maxim, <span>“Demystifying delta-sigma <span>ADC</span>s,”</span> Maxim Integrated TM, Tutorial 1870, Jan. 2003. Available: <a href="https://www.maximintegrated.com/en/app-notes/index.mvp/id/1870">https://www.maximintegrated.com/en/app-notes/index.mvp/id/1870</a></div>
+</div>
+<div id="ref-murmann2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">B. Murmann, <em>Analysis and design of elementary MOS amplifier stages</em>. in The modular series of microelectronic device and circuit design. NTS Press, 2013. Available: <a href="https://github.com/bmurmann/Book-on-MOS-stages/blob/main/book/Analysis and Design of Elementary MOS
+                  Amplifier Stages.pdf">https://github.com/bmurmann/Book-on-MOS-stages/blob/main/book/Analysis and Design of Elementary MOS Amplifier Stages.pdf</a></div>
+</div>
+<div id="ref-murmann2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline">B. Murmann, <span>“EE 628: Analysis and design of integrated circuits.”</span> GitHub, University of Hawaiʻi at Mānoa, 2024. Available: <a href="https://github.com/bmurmann/EE628">https://github.com/bmurmann/EE628</a></div>
+</div>
+<div id="ref-pavan2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">S. Pavan, R. Schreier, and G. C. Temes, <em>Understanding delta-sigma data converters</em>. in IEEE press series on microelectronic systems. Wiley Press, 2017, p. 584. doi: <a href="https://doi.org/10.1002/9781119258308">10.1002/9781119258308</a>.</div>
+</div>
+<div id="ref-plassche1977" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline">R. van de Plassche and R. E. J. van der Grift, <span>“A five-digit analog-digital converter,”</span> <em>IEEE Journal of Solid-State Circuits</em>, vol. 12, no. 6, pp. 656–662, 1977, doi: <a href="https://doi.org/10.1109/JSSC.1977.1050975">10.1109/JSSC.1977.1050975</a>.</div>
+</div>
+<div id="ref-pretl2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[30] </div><div class="csl-right-inline">H. Pretl and M. Eberlein, <span>“Fifty nifty variations of two-transistor circuits: A tribute to the versatility of <span>MOSFETs</span>,”</span> <em><span>IEEE</span> Solid-State Circuits Magazine</em>, vol. 13, no. 3, pp. 38–46, 2021, doi: <a href="https://doi.org/10.1109/mssc.2021.3088968">10.1109/mssc.2021.3088968</a>.</div>
+</div>
+<div id="ref-pretl2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[31] </div><div class="csl-right-inline">H. Pretl, M. Koefinger, and S. Dorrer, <span>“Analog <span>Circuit</span> <span>Design</span>.”</span> Dec. 2024. doi: <a href="https://doi.org/10.5281/zenodo.14387481">10.5281/zenodo.14387481</a>.</div>
+</div>
+<div id="ref-pretl2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[32] </div><div class="csl-right-inline">H. Pretl and G. Zachl, <em>GitHub repository of the IIC-OSIC-TOOLS</em>. (Jan. 2025). Zenodo. doi: <a href="https://doi.org/10.5281/zenodo.14634518">10.5281/zenodo.14634518</a>.</div>
+</div>
+<div id="ref-rambo-2025-ihp-analog-academ" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[33] </div><div class="csl-right-inline">P. Rambo, V. Sharma, and C. Wittke, <span>“IHP analog academy.”</span> Accessed: Nov. 13, 2025. [Online]. Available: <a href="https://github.com/IHP-GmbH/IHP-AnalogAcademy">https://github.com/IHP-GmbH/IHP-AnalogAcademy</a></div>
+</div>
+<div id="ref-ratschenberger2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[34] </div><div class="csl-right-inline">J. Ratschenberger and H. Pretl, <em>From code to chip: Open-source automated analog layout design</em>, 1st ed. in Synthesis lectures on engineering, science, and technology. Springer Cham, 2025. doi: <a href="https://doi.org/10.1007/978-3-031-68562-0">10.1007/978-3-031-68562-0</a>.</div>
+</div>
+<div id="ref-razavi2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[35] </div><div class="csl-right-inline">B. Razavi, <span>“The delta-sigma modulator [a circuit for all seasons],”</span> <em>IEEE Solid-State Circuits Magazine</em>, vol. 8, no. 2, pp. 10–15, Apr. 2016, doi: <a href="https://doi.org/10.1109/MSSC.2016.2543061">10.1109/MSSC.2016.2543061</a>.</div>
+</div>
+<div id="ref-razavi2016c" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[36] </div><div class="csl-right-inline">B. Razavi, <em>Design of analog CMOS integrated circuits</em>, 2nd ed. McGraw-Hill Education, 2016.</div>
+</div>
+<div id="ref-razavi2017d" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[37] </div><div class="csl-right-inline">B. Razavi, <span>“The switched-capacitor integrator [a circuit for all seasons],”</span> <em>IEEE Solid-State Circuits Magazine</em>, vol. 9, no. 1, pp. 9–11, 2017, doi: <a href="https://doi.org/10.1109/MSSC.2016.2624178">10.1109/MSSC.2016.2624178</a>.</div>
+</div>
+<div id="ref-rosa2011" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[38] </div><div class="csl-right-inline">J. M. de la Rosa, <span>“Sigma-delta modulators: Tutorial overview, design guide, and state-of-the-art survey,”</span> <em>IEEE J. Circuit and Systems</em>, vol. 58, no. 1, pp. 1–21, Jan. 2011, doi: <a href="https://doi.org/10.1109/TCSI.2010.2097652">10.1109/TCSI.2010.2097652</a>.</div>
+</div>
+<div id="ref-rosa2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[39] </div><div class="csl-right-inline">J. M. de la Rosa and R. del Rio, <em><span>CMOS</span> sigma-delta converters - practical design guide</em>. John Wiley &amp; Sons, 2013, p. 398. doi: <a href="https://doi.org/10.1002/9781118569238">10.1002/9781118569238</a>.</div>
+</div>
+<div id="ref-schreier2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[40] </div><div class="csl-right-inline">R. Schreier and G. C. Temes, <em>Understanding delta-sigma data converters</em>. Wiley-IEEE Press, 2004, p. 464.</div>
+</div>
+<div id="ref-schreier2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[41] </div><div class="csl-right-inline">R. Schreier, <span>“Delta sigma toolbox.”</span> MATLAB Central File Exchange, Feb. 2020. Available: <a href="https://www.mathworks.com/matlabcentral/fileexchange/19-delta-sigma-toolbox">https://www.mathworks.com/matlabcentral/fileexchange/19-delta-sigma-toolbox</a></div>
+</div>
+<div id="ref-sutherland2007" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[42] </div><div class="csl-right-inline">S. Sutherland and D. Mills, <em>Verilog and SystemVerilog gotchas</em>. Springer US, 2007. doi: <a href="https://doi.org/10.1007/978-0-387-71715-9">10.1007/978-0-387-71715-9</a>.</div>
+</div>
+<div id="ref-tan2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[43] </div><div class="csl-right-inline">Z. Tan, C.-H. Chen, Y. Chae, and G. C. Temes, <span>“<span>I</span>ncremental <span>D</span>elta-<span>S</span>igma <span>ADC</span>s: <span>A</span> <span>T</span>utorial <span>R</span>eview,”</span> <em>IEEE Transactions on Circuits and Systems I: Regular Papers</em>, vol. 67, pp. 4161–4173, Dec. 2020, doi: <a href="https://doi.org/10.1109/TCSI.2020.3033458">10.1109/TCSI.2020.3033458</a>.</div>
+</div>
+<div id="ref-temes-2021-switc-capac" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[44] </div><div class="csl-right-inline">G. C. Temes, U.-K. Moon, and D. Allstot, <span>“Switched-capacitor circuits [education],”</span> <em>IEEE Circuits and Systems Magazine</em>, vol. 21, no. 4, pp. 40–42, 2021, doi: <a href="https://doi.org/10.1109/mcas.2021.3118195">10.1109/mcas.2021.3118195</a>.</div>
+</div>
+<div id="ref-verbeure2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[45] </div><div class="csl-right-inline">T. Verbeure, <span>“An intuitive look at moving average and CIC filters.”</span> GitHub, Sept. 2020. Available: <a href="https://tomverbeure.github.io/2020/10/11/Designing-Generic-FIR-Filters-with-pyFDA-and-Numpy.html">https://tomverbeure.github.io/2020/10/11/Designing-Generic-FIR-Filters-with-pyFDA-and-Numpy.html</a></div>
+</div>
+<div id="ref-verbeure2020a" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[46] </div><div class="csl-right-inline">T. Verbeure, <span>“PDM microphones and sigma-delta a/d conversion.”</span> GitHub, Oct. 2020. Available: <a href="https://tomverbeure.github.io/2020/10/04/PDM-Microphones-and-Sigma-Delta-Conversion.html">https://tomverbeure.github.io/2020/10/04/PDM-Microphones-and-Sigma-Delta-Conversion.html</a></div>
+</div>
+<div id="ref-verbeure2020b" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[47] </div><div class="csl-right-inline">T. Verbeure, <span>“Designing generic FIR filters with pyFDA and NumPy.”</span> GitHub, Oct. 2020. Available: <a href="https://tomverbeure.github.io/2020/10/11/Designing-Generic-FIR-Filters-with-pyFDA-and-Numpy.html">https://tomverbeure.github.io/2020/10/11/Designing-Generic-FIR-Filters-with-pyFDA-and-Numpy.html</a></div>
+</div>
+<div id="ref-verbeure2020c" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[48] </div><div class="csl-right-inline">T. Verbeure, <span>“From microphone datasheet to filter design specification.”</span> GitHub, Oct. 2020. Available: <a href="https://tomverbeure.github.io/2020/10/17/From-Microphone-Datasheet-to-Design-Specification.html">https://tomverbeure.github.io/2020/10/17/From-Microphone-Datasheet-to-Design-Specification.html</a></div>
+</div>
+<div id="ref-verbeure2020d" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[49] </div><div class="csl-right-inline">T. Verbeure, <span>“Half-band filters, a workhorse of decimation filters.”</span> GitHub, Dec. 2020. Available: <a href="https://tomverbeure.github.io/2020/12/15/Half-Band-Filters-A-Workhorse-of-Decimation-Filters.html">https://tomverbeure.github.io/2020/12/15/Half-Band-Filters-A-Workhorse-of-Decimation-Filters.html</a></div>
+</div>
+<div id="ref-wickert2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[50] </div><div class="csl-right-inline">M. Wickert, <em>Signals and systems for dummies</em>. John Wiley &amp; Sons Inc, 2013. Available: <a href="https://learning.oreilly.com/library/view/signals-and-systems/9781118475669/?ar=">https://learning.oreilly.com/library/view/signals-and-systems/9781118475669/?ar=</a></div>
+</div>
+<div id="ref-williams2006" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[51] </div><div class="csl-right-inline">A. Williams and F. J. Taylor, <em>Electronic filter design handbook</em>, 4th ed. McGraw-Hill Professional, 2006, p. 775.</div>
+</div>
+<div id="ref-wolter2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[52] </div><div class="csl-right-inline">S. Wolter, <span>“Digital signal processing i.”</span> Course notes reader, Hochschule Bremen (HSB), institution of Electrical Engineering; Computer Science, Bremen, Germany, Dec. 2024. Available: <a href="https://wolter.hs-bremen.de/skripte/DSP_I/">https://wolter.hs-bremen.de/skripte/DSP_I/</a></div>
+</div>
+<div id="ref-wolter2024a" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[53] </div><div class="csl-right-inline">S. Wolter, <span>“Digital signal processing II.”</span> Course notes reader, Hochschule Bremen (HSB), institution of Electrical Engineering; Computer Science, Bremen, Germany, Dec. 2024. Available: <a href="https://wolter.hs-bremen.de/skripte/DSP_II/">https://wolter.hs-bremen.de/skripte/DSP_II/</a></div>
+</div>
+<div id="ref-wulff-2026-advan-integ-circuit" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[54] </div><div class="csl-right-inline">C. Wulff, <span>“Advanced integrated circuits: Lecture notes.”</span> Accessed: Nov. 01, 2026. [Online]. Available: <a href="https://analogicus.com/aic2026/">https://analogicus.com/aic2026/</a></div>
+</div>
+<div id="ref-zeghbroeck2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[55] </div><div class="csl-right-inline">B. V. Zeghbroeck, <span>“Principles of semiconductor devices.”</span> Course notes reader, Univ. of Colorado at Boulder, Dept. of Electrical, Computer; Energy Engineering, Colorado, U.S., 2020. Available: <a href="https://truenano.com/PSD20/">https://truenano.com/PSD20/</a></div>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -489,7 +706,8 @@ Figure&nbsp;2.1: Modular board-level sensor system.
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -498,8 +716,69 @@ Figure&nbsp;2.1: Modular board-level sensor system.
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -513,6 +792,7 @@ Figure&nbsp;2.1: Modular board-level sensor system.
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -675,44 +955,54 @@ Figure&nbsp;2.1: Modular board-level sensor system.
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -811,15 +1101,18 @@ Figure&nbsp;2.1: Modular board-level sensor system.
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
       <a href="../index.html" class="pagination-link" aria-label="Unsyllabus">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Unsyllabus</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references.html" class="pagination-link" aria-label="Bibliography">
-        <span class="nav-page-text">Bibliography</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../designs/ana_inv/index.html" class="pagination-link" aria-label="Analog Inverter Tutorial">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Analog Inverter Tutorial</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -827,7 +1120,7 @@ Figure&nbsp;2.1: Modular board-level sensor system.
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Design and Realization of Mixed-Technology Systems (DRMS) formerly known as Concept Engineering Mixed-Technology Systems (CEMS)</p>
+<p>Design and Realization of Mixed-Technology Systems (DRMS)</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
