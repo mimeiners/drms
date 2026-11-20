@@ -56,17 +56,67 @@ Ref\. Hendriks\, "Specifying Communications DACs”\, IEEE Spectrum\, Jul\. 1997
 
 [TTE Elliptical Bandpass Filters](https://www.tte.com/products/bandpass/elliptical-function/)
 
-<span style="color:##ff0000">Signal generator harmonics</span>
+<span style="color:#ff0000">Signal generator harmonics</span>
 
 ## Spectral Estimation
 
 ## Matlab Example
 
-![](img/lec-04-adc_metrics_2.png)
+```{matlab}
+%% Init
+
+N  = 100;
+
+fs = 1000;
+
+fx = 100;
+
+%% Signal\, FFT\, plot
+
+x = cos\(2\*pi\*fx/fs\*\[0:N\-1\]\);
+
+s = abs\(fft\(x\)\);
+
+plot\(s\, 'linewidth'\, 2\);
+```
+
+![](../images/lec-04-adc_metrics_2.png)
 
 ## Normalized Plot with Frequency Axis
 
-![](img/lec-04-adc_metrics_3.png)
+```{matlab}
+%% Init
+
+N  = 100;
+
+fs = 1000;
+
+fx = 100;
+
+FS = 1; % full\-scale amplitude
+
+%% Generate signal and FFT
+
+x = FS\*cos\(2\*pi\*fx/fs\*\[0:N\-1\]\);
+
+s = abs\(fft\(x\)\);
+
+% remove redundant half of spectrum
+
+s = s\(1:end/2\);
+
+% normalize magnitudes to dBFS
+
+% dbFS = dB relative to full\-scale
+
+s = 20\*log10\(2\*s/N/FS\);
+
+% frequency vector
+
+f = \[0:N/2\-1\]/N;
+```
+
+![](../images/lec-04-adc_metrics_3.png)
 
 ## Another Example
 
@@ -76,7 +126,7 @@ This doesn't look like a spectrum of a sinusoid …
 
 What's going on?
 
-![](img/lec-04-adc_metrics_4.png)
+![](../images/lec-04-adc_metrics_4.png)
 
 ## Spectral Leakage
 
@@ -91,9 +141,21 @@ What's going on?
 
 ## Integer Number of Cycles
 
+```{matlab}
+%% Init
+
+N  = 100;
+
+cycles = 9;
+
+fs = 1000;
+
+fx = cycles\*fs/N;
+````
+
 Usable test frequencies are limited to a multiple of fs/N\,
 
-![](img/lec-04-adc_metrics_5.png)
+![](../images/lec-04-adc_metrics_5.png)
 
 ## Windowing
 
@@ -109,11 +171,33 @@ Usable test frequencies are limited to a multiple of fs/N\,
 
 ## Hann Window
 
-![](img/lec-04-adc_metrics_6.png)
+N=64;
+
+wvtool\(hann\(N\)\)
+
+![](../images/lec-04-adc_metrics_6.png)
 
 ## Spectrum with Window
 
-![](img/lec-04-adc_metrics_7.png)
+```{matlab}
+N  = 100;
+
+fs = 1000;
+
+fx = 101;
+
+A  = 1;
+
+x = A\*cos\(2\*pi\*fx/fs\*\[0:N\-1\]\);
+
+s  = abs\(fft\(x\)\);
+
+x1 = x\.\*hann\(N\);
+
+s1 = abs\(fft\(x1\)\);
+```
+
+![](../images/lec-04-adc_metrics_7.png)
 
 ## Integer Cycles vs. Windowing
 
@@ -134,17 +218,65 @@ Now that we've “ _calibrated_ ” our test system\, let's look at some spectra
 
 First look at quantization noise introduced by an ideal quantizer\.
 
+```{matlab}
+<span style="color:#008013">%% Spec\.</span>
+
+N = 2048;  <span style="color:#008013">% FFT points</span>
+
+cycles = 67;  <span style="color:#008013">% number of cycles</span>
+
+fs = 1000;  <span style="color:#008013">% sampling frequency</span>
+
+Ts = 1/fs;  <span style="color:#008013">% sampling period</span>
+
+fx = cycles\*fs/N;  <span style="color:#008013">% input tone</span>
+
+FSR = 1;  <span style="color:#008013">% full\-scale range amplitude</span>
+
+f = \[0:N/2\-1\]/N;  <span style="color:#008013">% frequency vector</span>
+
+B = 10;  <span style="color:#008013">% number of bits</span>
+
+LSB = \(2\*FSR\)/2^B;  <span style="color:#008013">% Delta</span>
+
+x = FSR \* sin\(2\*pi\*fx/fs\*\[0:N\-1\]\);
+
+<span style="color:#008013">% Bipolar mid\-tread quantizer</span>
+
+xq = round\(x/LSB\)\*LSB;
+
+sq = abs\(fft\(xq\)\);
+
+<span style="color:#008013">% Remove redundant half of spectrum and normalize to FS</span>
+
+sq\_hlf = sq\(1:end/2\)\*2/N/FSR;
+
+sqdBFS = 20\*log10\(sq\_hlf\);
+
+<span style="color:#008013">% log10\(0\) \-> \-inf/inf correction</span>
+
+sqdBFS\(isinf\(sqdBFS\)\) = \-150;
+
+<span style="color:#008013">% Calculate SNR</span>
+
+sigbin = 1 \+ cycles;
+
+noise = \[sq\_hlf\(1:sigbin\-1\)\, sq\_hlf\(sigbin\+1:end\)\];
+
+snr = 10\*log10\(sq\_hlf\(sigbin\)^2/sum\(noise\.^2\)\)
+````
+
 ## Spectrum with Quantization Noise
 
-![](img/lec-04-adc_metrics_8.png)
+![](../images/lec-04-adc_metrics_8.png)
 
 ## SQNR
 
-![](img/lec-04-adc_metrics_9.png)
+![](../images/lec-04-adc_metrics_9.png)
 
 ## FFT Noise Floor
 
-![](img/lec-04-adc_metrics_10.png)
+![](../images/lec-04-adc_metrics_10.png)
 
 ## DFT Plot Annotation
 
@@ -166,7 +298,7 @@ Quantization noise is highly deterministic and periodic
 
 For more random and „white“ quantization noise\, it is best to make N and cycles mutually prime GCD\(N\, cycles\) = 1
 
-![](img/lec-04-adc_metrics_11.png)
+![](../images/lec-04-adc_metrics_11.png)
 
 ## Typical ADC Output Spectrum
 
@@ -176,8 +308,7 @@ For more random and „white“ quantization noise\, it is best to make N and cy
 
 ## Survey Data
 
-R\. H\. Walden\, "Analog\-to\-digital converter survey and analysis\,"  _IEEE J\. on Selected Areas in Communications_
-\, pp\. 539\-50\, April 1999
+R\. H\. Walden\, "Analog\-to\-digital converter survey and analysis\,"  _IEEE J\. on Selected Areas in Communications_ \, pp\. 539\-50\, April 1999
 
 Input Power \[dB\]
 
@@ -229,18 +360,19 @@ PRODUCTS
   * E\.g\. OFDM
 
 
-## Frequency Dependence
+## Frequency Dependence (1)
 
 * All of the above discussed metrics generally depend on frequency
   * Sampling frequency and input frequency
 
-![](img/lec-04-adc_metrics_20.png)
 
-![](img/lec-04-adc_metrics_21.png)
+![](../images/lec-04-adc_metrics_20.png)
+
+![](../images/lec-04-adc_metrics_21.png)
 
 \[Analog Devices\, AD9203 Datasheet \]
 
-![](img/lec-04-adc_metrics_22.png)
+![](../images/lec-04-adc_metrics_22.png)
 
 \[Texas Instruments\, ADS5541 Datasheet \]
 
@@ -252,28 +384,30 @@ PRODUCTS
 * ERBW is only a useful metric when the SNDR is relatively flat initially and gracefully degrades at high frequencies
 
 
-## Relationship Between INL and Harmonic Distortion
+## Relationship Between INL and Harmonic Distortion (1)
 
 * The INL of an ADC often takes on a quadratic or cubic “bow”
   * Meaning that the transfer function can be approximated by x\+a2x2 or x\+a3x3
 * The resulting harmonic distortion usually sets the low frequency SFDR
+
 
 * The expression below provides an analytical relationship between the peak INL due a cubic bow and the resulting HD3
 * The result provides a reasonable bound even if the INL is not perfectly cubic
   * Rule of thumb: HD ≅ \-20log\(2B/INL\)
   * E\.g\. 1 LSB INL at 10 bits  HD ≅ \-60 dB
 
+
 Example of a cubic INL
 
 Lee\, JSSC 12/2007
 
-## SNR Degradation due to DNL
+## SNR Degradation due to DNL (1)
 
 For an ideal quantizer we assumed uniform quatization error over
 
 Let's add uniform DNL over                  and repeat math\.\.\.
 
-![](img/lec-04-adc_metrics_25.png)
+![](../images/lec-04-adc_metrics_25.png)
 
 Source: Ion Opris\, http://www\.oprisconsulting\.com
 
@@ -287,13 +421,13 @@ Source: Ion Opris\, http://www\.oprisconsulting\.com
 
 ## Quantization Noise in 1Hz
 
-## Spot Noise Figure
+## Spot Noise Figure (1)
 
 Improve NF by increasing R \(need a transformer\)\, resolution \(N\) and fs
 
 ## Real World Example
 
-![](img/lec-04-adc_metrics_31.png)
+![](../images/lec-04-adc_metrics_31.png)
 
 Analog Devices\, Tutorial MT\-006
 

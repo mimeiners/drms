@@ -84,6 +84,8 @@
   * Comma-Separated-Values (CSV), Tab-Separated-Values (TSV)
 	* [csvkit](https://github.com/wireservice/csvkit)
 	* [miller](https://github.com/johnkerl/miller)
+  * [Pandas](https://pandas.pydata.org)
+	* [Python for Data Analysis](https://wesmckinney.com/book/)
   * Spreadsheet (.xlsx, .ods)
 
 

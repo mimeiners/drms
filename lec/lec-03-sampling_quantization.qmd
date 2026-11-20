@@ -1,4 +1,4 @@
-# Sampling and Quantization
+# Sampling & Quantization
 
 ## The Data Conversion Problem
 
@@ -13,7 +13,8 @@
 
 ## Overview
 
-We'll first look at these building blocks from a functional\, “black box” perspective;refine later and look at implementations
+We'll first look at these building blocks from a functional\, “black box” perspective; refine later and look at implementations
+
 
 ## Uniform Sampling and Quantization
 
@@ -46,7 +47,7 @@ Source: EE315a\, B\. Murmann\, Stanford Univ\.
 
 ## Practical Anti-Alias Filter
 
-Need to sample faster than Nyquist rate to get good attenuation=>  _Oversampling_
+Need to sample faster than Nyquist rate to get good attenuation =>  _Oversampling_
 
 ## How much Oversampling?
 
@@ -57,7 +58,6 @@ In high\-speed converters\, making fs/fsig\,max>10 is usually impossible or too 
 Means that we need fairly high order filters\.
 
 Ref\. “CMOS Integrated ADC and DAC”\, v\.d\. Plassche\, 2003
-
 
 ## Classes of Sampling
 
@@ -111,7 +111,7 @@ __ZOH Output\, __  __Spectrum of Staircase Approximation__
 
 original spectrum
 
-## Reconstruction Filter
+# Reconstruction Filter
 
 * Also called smoothing filter
 * Same situation as with anti\-alias filter
@@ -131,19 +131,23 @@ original spectrum
 
 ## Recap
 
-![](img/lec-03-sampling_quantization_8.png)
+![](../images/lec-03-sampling_quantization_8.png)
 
-![](img/lec-03-sampling_quantization_9.png)
+![](../images/lec-03-sampling_quantization_9.png)
+
 
 * Next\, look at
   * Transfer functions of quantizer and DAC
   * Impact of quantization error
 
 
-![](img/lec-03-sampling_quantization_10.png)
+![](../images/lec-03-sampling_quantization_10.png)
 
-![](img/lec-03-sampling_quantization_11.png)
+![](../images/lec-03-sampling_quantization_11.png)
 
+<span style="color:#000000">Transfer Function</span>
+
+<span style="color:#000000">V</span>  <span style="color:#000000">q</span>  <span style="color:#000000"> \(quantized output\)</span>
 
 ## Quantization of an Analog Signal
 
@@ -163,16 +167,15 @@ original spectrum
   * Its purpose is to show that quantization and encoding are conceptually separate operations
   * Changing the encoding of a quantizer has no interesting implications on its function or performance
 
-
 ## Encoding Example for a B-Bit Quantizer
 
 ## Nomenclature
 
-![](img/lec-03-sampling_quantization_15.png)
+![](../images/lec-03-sampling_quantization_15.png)
 
 \[IEEE Standard 1241\-2000\]
 
-## Implementation Specific Technicalities
+# Implementation Specific Technicalities
 
 * So far\, we avoided specifying the absolute location of the code range with respect to "zero" input\.
 * The zero input location depends on the particular implementation of the quantizer\.
@@ -183,7 +186,6 @@ original spectrum
     * The quantizer accepts positive and negative inputs\, represents the common case of a differential circuit\.
   * Mid\-rise characteristic
     * The center of the transfer function \(zero\)\, coincides with a transition level\.
-
 
 ## Bipolar Mid-Rise Quantizer
 
@@ -245,6 +247,7 @@ What's going on here?
 * Sampled signal is repetitive and has only a few distinct values
   * This also means that the quantizer generates only a few distinct values of eq; not a uniform distribution
 
+
 fsig/fs=100/1000
 
 ## Analysis (2)
@@ -258,13 +261,13 @@ This means that eq\(n\) has at best 10 distinct values\, even if we take many mo
 ## Dynamic Rang ideal ADC
 
 | __B \(Number of Bits\)__ | __SQNR__ |
-| :-: | :-: |
-| 8 | 50 dB |
-| 12 | 74 dB |
-| 16 | 98 dB |
-| 20 | 122 dB |
+|:------------------------:|:--------:|
+|            8             |  50 dB   |
+|            12            |  74 dB   |
+|            16            |  98 dB   |
+|            20            |  122 dB  |
 
-## Quantization Noise Spectrum
+## Quantization Noise Spectrum (1)
 
 * How is the quantization noise power distributed in frequency?
   * First think about applying a sine wave to a quantizer\, without sampling \(output is continuous time\)
@@ -276,13 +279,16 @@ Quantization results in an "infinite" number of harmonics
 
 Ref\. Y\. Tsividis\, ICASSP 2004
 
+
 * Now sample the signal at the output
   * All harmonics \(an "infinite" number of them\) will alias into band from 0 to fs/2
   * Quantization noise spectrum becomes "white"
 
+
 Interchanging sampling and quantization won’t change this situation
 
 Ref\. Y\. Tsividis\, ICASSP 2004
+
 
 * Can show that the quantization noise power is indeed distributed \(approximately\) uniformly in frequency
   * Again\, this is provided that the quantization error is "sufficiently random”
@@ -326,10 +332,10 @@ Ideal DAC does not introduce quantization error\!
   * Gain error is the deviation of top endpoint from its ideal location with offset removed
 * Both quantities are measured in LSB or as percentage of full\-scale range
 
+
 Same idea\, except that endpoints are directly defined by analog output values at minimum and maximum digital input
 
 Also note that errors are specified along the vertical axis
-
 
 ## Comments on Offset and Gain Errors
 
@@ -356,22 +362,22 @@ Also note that errors are specified along the vertical axis
 
 ## ADC DNL Example (1)
 
-| Code \(k\) | W \[V\] |
-| :-: | :-: |
-| 0 | undefined |
-| 1 | 1 |
-| 2 | 0\.5 |
-| 3 | 1 |
-| 4 | 1\.5 |
-| 5 | 0 |
-| 6 | 1\.5 |
-| 7 | undefined |
-
+| Code \(k\) |  W \[V\]  |
+|:----------:|:---------:|
+|     0      | undefined |
+|     1      |     1     |
+|     2      |   0\.5    |
+|     3      |     1     |
+|     4      |   1\.5    |
+|     5      |     0     |
+|     6      |   1\.5    |
+|     7      | undefined |
 
 
 * What is the average code width?
   * ADC with perfect uniformity would divide the range between first and last transition into 6 equal pieces
   * Hence calculate average code width \(i\.e\. LSB size\) as
+
 
 Now calculate DNL\(k\) for each code k using
 
@@ -383,14 +389,15 @@ Now calculate DNL\(k\) for each code k using
   * But possible to have DNL > \+1 LSB
 * Can show that sum over all DNL\(k\) is equal to zero
 
+
 | Code \(k\) | DNL / LSB |
-| :-: | :-: |
-| 1 | 0\.09 |
-| 2 | \-0\.45 |
-| 3 | 0\.09 |
-| 4 | 0\.64 |
-| 5 | \-1\.00 |
-| 6 | 0\.64 |
+|:----------:|:---------:|
+|     1      |   0\.09   |
+|     2      |  \-0\.45  |
+|     3      |   0\.09   |
+|     4      |   0\.64   |
+|     5      |  \-1\.00  |
+|     6      |   0\.64   |
 
 ## A Typical ADC DNL Plot
 
@@ -400,7 +407,7 @@ Now calculate DNL\(k\) for each code k using
   * Why ?
 
 
-![](img/lec-03-sampling_quantization_31.png)
+![](../images/lec-03-sampling_quantization_31.png)
 
 \[Ahmed\, JSSC 12/2005\]
 
@@ -411,7 +418,7 @@ Now calculate DNL\(k\) for each code k using
 * Especially for converters whose input referred \(thermal\) noise is larger than an LSB\, DNL is a "fairly useless" metric
 
 
-![](img/lec-03-sampling_quantization_32.jpg)
+![](../images/lec-03-sampling_quantization_32.jpg)
 
 \[W\. Kester\, "ADC Input Noise: The Good\, The Bad\, and The Ugly\. Is No Noise Good Noise?" Analogue Dialogue\, Feb\. 2006\]
 
@@ -444,7 +451,7 @@ How about a non\-monotonic ADC?
   * Just as with DNL\, the INL of a converter is by definition independent of gain and offset errors
 
 
-## ADC INL Example
+## ADC INL Example (1)
 
 "Straight line" reference is uniform staircase between first and last transition
 
@@ -461,14 +468,14 @@ Means that once we computed DNL\, we can easily find INL using a cumulative sum 
 Using DNL values from last lecture\, we find
 
 | Code \(k\) | DNL \[LSB\] | INL \[LSB\] |
-| :-: | :-: | :-: |
-| 1 | 0\.09 | 0 |
-| 2 | \-0\.45 | 0\.09 |
-| 3 | 0\.09 | \-0\.36 |
-| 4 | 0\.64 | \-0\.27 |
-| 5 | \-1\.00 | 0\.36 |
-| 6 | 0\.64 | \-0\.64 |
-| 7 | undefined | 0 |
+|:----------:|:-----------:|:-----------:|
+|     1      |    0\.09    |      0      |
+|     2      |   \-0\.45   |    0\.09    |
+|     3      |    0\.09    |   \-0\.36   |
+|     4      |    0\.64    |   \-0\.27   |
+|     5      |   \-1\.00   |    0\.36    |
+|     6      |    0\.64    |   \-0\.64   |
+|     7      |  undefined  |      0      |
 
 ## Result
 
@@ -480,7 +487,7 @@ Using DNL values from last lecture\, we find
 * Since INL is a cumulative measure\, it turns out to be less sensitive than DNL to thermal noise "smearing"
 
 
-![](img/lec-03-sampling_quantization_34.png)
+![](../images/lec-03-sampling_quantization_34.png)
 
 \[Ishii\, Custom Integrated Circuits Conference\, 2005\]
 
@@ -530,7 +537,85 @@ The histogram now takes on a bathtub shape\, which can be mathematically inverte
 
 ## DNL/INL Code
 
-## DNL/INL Code Test
+function \[dnl\,inl\] = dnl\_inl\_sin\(y\);
+
+%DNL\_INL\_SIN
+
+% dnl and inl ADC output
+
+% input y contains the ADC output
+
+% vector obtained from quantizing a
+
+% sinusoid
+
+% Boris Murmann\, Aug 2002
+
+% Bernhard Boser\, Sept 2002
+
+% histogram boundaries
+
+minbin=min\(y\);
+
+maxbin=max\(y\);
+
+% histogram
+
+h = hist\(y\, minbin:maxbin\);
+
+% cumulative histogram
+
+ch = cumsum\(h\);
+
+% transition levels
+
+<span style="color:#ec3800">T = \-cos\(pi\*</span>  <span style="color:#ec3800">ch</span>  <span style="color:#ec3800">/sum\(h\)\);</span>
+
+% linearized histogram
+
+hlin = T\(2:end\) \- T\(1:end\-1\);
+
+% truncate at least first and last
+
+% bin\, more if input did not clip ADC
+
+trunc=2;
+
+hlin\_trunc = hlin\(1\+trunc:end\-trunc\);
+
+% calculate lsb size and dnl
+
+lsb= sum\(hlin\_trunc\) / \(length\(hlin\_trunc\)\);
+
+dnl= \[0 hlin\_trunc/lsb\-1\];
+
+misscodes = length\(find\(dnl<\-0\.9\)\);
+
+% calculate inl
+
+inl= cumsum\(dnl\);
+
+# DNL/INL Code Test
+
+```{matlab}
+% converter model
+B = 6;  		 % bits
+range = 2^\(B\-1\) \- 1;
+
+% thresholds \(ideal converter\)
+th = \-range:range;	 % ideal thresholds
+th\(20\) = th\(20\)\+0\.7; % error
+fs = 1e6;
+fx = 494e3 \+ pi;	 % try fs/10\!
+C  = round\(100 \* 2^B / \(fs / fx\)\);
+t = 0:1/fs:C/fx;
+x = \(range\+1\) \* sin\(2\*pi\*fx\.\*t\);
+y = adc\(x\, th\) \- 2^\(B\-1\);
+
+hist\(y\, min\(y\):max\(y\)\);
+
+dnl\_inl\_sin\(y\);
+```
 
 ## Limitations of ADC Histogram Testing
 
@@ -556,4 +641,3 @@ Always look at both DNL/INL
 INL usually does not lie
 
 \[Source: David Robertson\, Analog Devices\]
-
