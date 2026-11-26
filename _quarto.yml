@@ -55,6 +55,7 @@ book:
     - part: Tutorials
       chapters:
         - designs/ana_inv/index.qmd
+        - designs/AnalogCircuits.ipynb  
         
     # - part: Winter 2024/25
     #   chapters:
